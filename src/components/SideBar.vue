@@ -1,3 +1,13 @@
+<script setup>
+import { defineEmits } from 'vue';
+
+  const emits = defineEmits(['selectOption'])
+
+  const selectOption = (isColor) => {
+    emits('selectOption', isColor)
+  }
+</script>
+
 <template>
   <v-navigation-drawer expand-on-hover rail>
     <v-list-item
@@ -10,11 +20,11 @@
     <v-divider />
 
     <v-list densicty="compact" nav>
-      <v-list-item prepend-icon="mdi-image" title="Color Gallery" value="color" />
+      <v-list-item @click="selectOption(true)" prepend-icon="mdi-image" title="Color Gallery" value="color" />
     </v-list>
 
     <v-list densicty="compact" nav>
-      <v-list-item prepend-icon="mdi-dialpad" title="Grayspace Gallery" value="color" />
+      <v-list-item @click="selectOption(false)" prepend-icon="mdi-dialpad" title="Grayspace Gallery" value="color" />
     </v-list>
 
   </v-navigation-drawer>
